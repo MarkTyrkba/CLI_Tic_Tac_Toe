@@ -54,7 +54,6 @@ impl Game {
                     Some(winner) => { println!("Winner's a: {}", winner); self.exit_in3sec(); },
                     None => {}
                 }
-
             }
             Err(err) => self.print_error(err),
         }
@@ -64,9 +63,9 @@ impl Game {
         match code {
             KeyCode::Esc => std::process::exit(0),
             KeyCode::Enter => { self.make_move(); }
-            KeyCode::Up if self.cursor_row > 0 => self.cursor_row -= 1,
-            KeyCode::Down if self.cursor_row < 2 => self.cursor_row += 1,
-            KeyCode::Left if self.cursor_col > 0 => self.cursor_col -= 1,
+            KeyCode::Up    if self.cursor_row > 0 => self.cursor_row -= 1,
+            KeyCode::Down  if self.cursor_row < 2 => self.cursor_row += 1,
+            KeyCode::Left  if self.cursor_col > 0 => self.cursor_col -= 1,
             KeyCode::Right if self.cursor_col < 2 => self.cursor_col += 1,
             _ => {}
         }
@@ -74,8 +73,7 @@ impl Game {
 
     fn run(&mut self) {
         loop {
-            execute!(io::stdout(),cursor::MoveTo(self.cursor_col as u16, self.cursor_row as u16))
-                .unwrap();
+            execute!(io::stdout(),cursor::MoveTo(self.cursor_col as u16, self.cursor_row as u16)).unwrap();
 
             if event::poll(Duration::from_millis(100)).unwrap() {
                 if let event::Event::Key(KeyEvent { code, .. }) = event::read().unwrap() {
