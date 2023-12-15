@@ -39,6 +39,11 @@ impl Game {
         };
     }
 
+    fn exit_in3sec(&self) {
+        std::thread::sleep(Duration::from_millis(3000));
+        std::process::exit(0);
+    }
+
     fn make_move(&mut self) {
         match self.field.make_move(self.cursor_row, self.cursor_col, self.player) {
             Ok(()) => {
@@ -46,10 +51,11 @@ impl Game {
                 self.field.clear_console();
                 self.field.field_out();
                 match self.field.is_over() {
-                    Some('D') => println!("DRAW"),
-                    Some(winner) => println!("Winner's a: {}", winner),
+                    Some('D') => { println!("DRAW"); self.exit_in3sec(); },
+                    Some(winner) => { println!("Winner's a: {}", winner); self.exit_in3sec(); },
                     None => {}
                 }
+
             }
             Err(err) => self.print_error(err),
         }
