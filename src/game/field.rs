@@ -2,7 +2,6 @@ pub(crate) mod field
 {
 use crossterm::{cursor, execute, terminal};
 
-#[derive(Clone)]
 pub struct Field {
     pub field: Vec<Vec<char>>,
 }
