@@ -35,7 +35,7 @@ impl Game {
         self.player = match self.player {
             'X' => 'O',
             'O' => 'X',
-            _ => 'X',
+             _  => 'X',
         };
     }
 

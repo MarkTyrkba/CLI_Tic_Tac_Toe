@@ -66,6 +66,7 @@ pub(crate) mod field {
 
             if self.field.iter().any(|row| row.iter().any(|&cell| cell == '_'))
                 { return None; }
+
             Some('D')
         }
 
