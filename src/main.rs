@@ -6,7 +6,6 @@ use crossterm::{
     cursor,
     execute,
     event::{self, KeyCode, KeyEvent},
-    terminal,
 };
 
 enum GameError {
@@ -103,10 +102,8 @@ impl Game {
 }
 
 fn main() {
-    terminal::enable_raw_mode().unwrap();
     let mut game = Game::new();
     game.field.clear_console();
     game.field.field_out();
     game.run();
-    terminal::disable_raw_mode().unwrap();
 }
