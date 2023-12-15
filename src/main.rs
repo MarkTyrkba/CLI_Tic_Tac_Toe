@@ -1,7 +1,7 @@
 mod game;
 use game::field;
 
-use std::{io, io::Write};
+use std::io;
 use std::time::Duration;
 use crossterm::{
     cursor,
